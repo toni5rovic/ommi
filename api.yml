@@ -27,4 +27,11 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Ommi.API/Dockerfile'
         tags: |
           $(tag)
-    
+    - task: NodeTool@0
+      inputs:
+      versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    - script: |
+            npm install
+            npm run build
+      displayName: 'npm install and build
