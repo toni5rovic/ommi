@@ -4,7 +4,17 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - ommi.client/*
+    - client.yml
+    exclude:
+    - Architecture/*
+    - Ommi.API/*
+    - api.yml
 
 pool:
   vmImage: 'windows-latest'
