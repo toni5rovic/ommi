@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Ommi.Buisness\Ommi.Buisness.csproj" />
+      <ProjectReference Include="..\Ommi.Business\Ommi.Business.csproj" />
     </ItemGroup>
 
 
