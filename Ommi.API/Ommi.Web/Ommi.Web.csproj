@@ -5,7 +5,7 @@
         <DockerfileContext>.</DockerfileContext>
         <DockerfileFile>..\Dockerfile</DockerfileFile>
         <UserSecretsId>37ab7c0d-cf64-4dd7-9314-6b4021b6ed27</UserSecretsId>
-        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
