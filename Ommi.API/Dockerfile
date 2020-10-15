@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Ommi.Web/Ommi.Web.csproj", "Ommi.Web/"]
-COPY ["Ommi.Buisness/Ommi.Buisness.csproj", "Ommi.Buisness/"]
+COPY ["Ommi.Business/Ommi.Business.csproj", "Ommi.Business/"]
 RUN dotnet restore "Ommi.Web/Ommi.Web.csproj"
 COPY . .
 WORKDIR "/src/Ommi.Web"
