@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ommi.Business;
+using Ommi.Business.DB;
 
 namespace Ommi.Web
 {
@@ -30,6 +31,8 @@ namespace Ommi.Web
 
 			string connectionString = Configuration.GetConnectionString("OmmiDbConnectionString");
 			services.AddOmmiDbContext(connectionString);
+
+			AutoMigrator.ApplyMigrations(connectionString);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
