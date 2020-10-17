@@ -5,8 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    signedIn: false,
+    showAppbar: true,
+    token: null
   },
   mutations: {
+    signedIn (state, value) {
+      state.signedIn = value
+    },
+    token (state, value) {
+      state.token = value
+    }
   },
   actions: {
   },
