@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Ommi.Buisness;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace Ommi.Web.Controllers
 {
+	[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -22,6 +24,7 @@ namespace Ommi.Web.Controllers
             _logger = logger;
         }
 
+		[AllowAnonymous]
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -36,5 +39,12 @@ namespace Ommi.Web.Controllers
 
             return Enumerable.Empty<string>().Concat(new[] { TestClass.Test });
         }
+
+		[HttpGet]
+		[Route("/authtest")]
+		public string[] AuthTest()
+		{
+			return new string[] { "Success" };
+		}
     }
 }
