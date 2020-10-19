@@ -1,8 +1,8 @@
-using System.Text;
+﻿using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +12,7 @@ using Ommi.Business.DB;
 using Ommi.Business.Services;
 using Ommi.Business.Services.Interfaces;
 using Ommi.Web.Models;
-using AutoMapper;
+using Ommi.Web.SignalR;
 
 namespace Ommi.Web
 {
@@ -28,14 +28,26 @@ namespace Ommi.Web
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			string[] origins = new string[]
+			{
+				"http://localhost:8080",
+				"https://ommi-ui.azurewebsites.net"
+			};
+
 			services.AddCors(options =>
 			{
 				options.AddDefaultPolicy(policy =>
 				{
 					policy.AllowAnyOrigin()
-						.AllowAnyMethod()
-						.AllowAnyHeader();
+						.AllowAnyHeader()
+						.AllowAnyMethod();
 				});
+
+				options.AddPolicy("CorsPolicy", builder => builder.WithOrigins(origins)
+					.AllowAnyHeader()
+					.AllowAnyMethod()
+					.AllowCredentials()
+					.SetIsOriginAllowed((host) => true));
 			});
 
 			services.AddControllers();
@@ -46,6 +58,8 @@ namespace Ommi.Web
 
 			// Apply migrations if needed
 			AutoMigrator.ApplyMigrations(connectionString);
+
+			services.AddSignalR();
 
 			// Add AspNetCore Identity
 			services.AddAspNetCoreIdentity();
@@ -65,7 +79,7 @@ namespace Ommi.Web
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			app.UseCors();
+			app.UseCors("CorsPolicy");
 
 			if (env.IsDevelopment())
 			{
@@ -81,6 +95,7 @@ namespace Ommi.Web
 
 			app.UseEndpoints(endpoints =>
 			{
+				endpoints.MapHub<OmmiHub>("/ommiHub");
 				endpoints.MapControllers();
 			});
 		}
