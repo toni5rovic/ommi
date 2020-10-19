@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
+import { POST } from '../../store/fetch'
 
 @Component
 export default class LoginPage extends Vue {
@@ -11,20 +12,13 @@ export default class LoginPage extends Vue {
   loginFailure = false
 
   onSubmit () {
-    const requestOptions: RequestInit = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.registerRequest)
-    }
-
-    const baseUrl = process.env.VUE_APP_API_BASEURL
-    return fetch(baseUrl + '/auth/login', requestOptions)
+    POST('/auth/login', this.registerRequest, false, '')
       .then(response => response.json())
       .then(data => {
-        console.log(data.token)
         this.$store.commit('token', data.token)
-        this.$router.push('/')
         this.$store.commit('signedIn', true)
+        this.$connectSignalR()
+        this.$router.push('/rooms')
       })
       .catch(() => {
         this.$store.commit('signedIn', false)
