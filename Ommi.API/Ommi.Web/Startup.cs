@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +52,7 @@ namespace Ommi.Web
 			
 			// Add Service classes
 			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<IRoomService, RoomService>();
 			
 			// Add AutoMapper
 			services.AddAutoMapper(typeof(AutoMapperProfile));
