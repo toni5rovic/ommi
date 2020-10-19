@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../pages/Home.vue'
 import Login from '../pages/login/login-page.vue'
-import Rooms from '../components/rooms/rooms.vue'
+import Rooms from '../pages/rooms/rooms.vue'
 import CreateRoom from '../pages/create-room/create-room.vue'
 
 Vue.use(VueRouter)
