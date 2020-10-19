@@ -3,10 +3,6 @@ import Component from 'vue-class-component'
 
 @Component
 export default class NavMenuScript extends Vue {
-  get isVisible () {
-    return this.$store.state.showAppbar
-  }
-
   signedin () {
     return this.$store.state.signedIn
   }
@@ -29,6 +25,7 @@ export default class NavMenuScript extends Vue {
   logout () {
     this.$store.commit('signedIn', false)
     this.$store.commit('token', null)
+    this.$connection.stop()
     this.root()
   }
 

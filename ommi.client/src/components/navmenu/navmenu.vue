@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app elevate-on-scroll color="primary" dark style="z-index: 4;" v-if="isVisible">
+    <v-app-bar app elevate-on-scroll color="primary" dark style="z-index: 4;">
       <v-toolbar-title link @click="root" style="cursor:pointer;">Ommi</v-toolbar-title>
       <v-spacer />
       <v-btn v-if="this.signedin() === false" @click="goToLogin()">
