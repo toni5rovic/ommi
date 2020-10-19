@@ -3,8 +3,11 @@ import App from './components/app/App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import SignalRPlugin from './plugins/signalr'
 
 Vue.config.productionTip = false
+
+Vue.use(SignalRPlugin)
 
 new Vue({
   router,
