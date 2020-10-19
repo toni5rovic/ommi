@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
+  <v-app>
     <div id="nav">
+    <v-app-bar app color="primary" dark>
       <menu-component />
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    </v-app-bar>
     </div>
     <router-view/>
-  </div>
+  </v-app>
 </template>
 
 <script src="./app.ts"></script>
