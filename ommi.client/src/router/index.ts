@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../pages/login/login-page.vue'
+import Rooms from '../components/rooms/rooms.vue'
+import CreateRoom from '../pages/create-room/create-room.vue'
 
 Vue.use(VueRouter)
 
@@ -12,17 +14,19 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/rooms',
+    name: 'Rooms',
+    component: Rooms
+  },
+  {
+    path: '/create-room',
+    name: 'CreateRoom',
+    component: CreateRoom
   }
 ]
 
