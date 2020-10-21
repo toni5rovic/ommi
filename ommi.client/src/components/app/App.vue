@@ -5,7 +5,6 @@
       <menu-component />
     </v-app-bar>
     </div>
-    <router-view/>
   </v-app>
 </template>
 

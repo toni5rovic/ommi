@@ -2,7 +2,7 @@
   <button
     :style="color"
     class="start"
-    @click="toggleOn"
+    @click="togglePlay"
   >
     {{ on ? 'Stop' : 'Play' }}
   </button>
@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    toggleOn () {
+    togglePlay () {
       this.$store.dispatch('toggleOn')
     }
   }

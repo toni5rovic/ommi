@@ -64,8 +64,7 @@ const store = new Vuex.Store({
     },
     setTrackStep (state, { track, step }) {
       const steps = state.boardState.tracks[track].steps.slice()
-      const val = !steps[step]
-      steps[step] = val
+      steps[step] = !steps[step]
       state.boardState.tracks[track].steps = steps
     },
     setSound ({ sounds }, { name, buffer }) {

@@ -33,10 +33,8 @@ export default {
     }
   },
   methods: {
-    onClick (e) {
-      const shiftEnabled = e.shiftKey === true
+    onClick () {
       this.$store.commit('setTrackStep', {
-        shiftEnabled,
         track: this.track,
         step: this.index
       })
