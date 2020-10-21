@@ -12,6 +12,8 @@ namespace Ommi.Web.Models
 			CreateMap<RegisterRequest, UserDTO>();
 			CreateMap<UserDTO, RegisterResponse>();
 			CreateMap<RoomDTO, RoomResponse>();
+			CreateMap<BoardStateDTO, BoardStateResponse>();
+			CreateMap<TrackDTO, TrackResponse>();
 
 			this.AddBusinessLayerMaps();
 		}
