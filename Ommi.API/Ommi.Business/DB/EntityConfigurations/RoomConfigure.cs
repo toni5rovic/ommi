@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Ommi.Business.DB.Entities;
 
 namespace Ommi.Business.DB.EntityConfigurations
 {

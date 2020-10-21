@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Ommi.Business.DB.Entities;
 
 namespace Ommi.Business.DB
 {
 	public class OmmiDbContext : IdentityDbContext
 	{
 		public DbSet<Room> Rooms { get; set; }
+		public DbSet<BoardState> BoardStates { get; set; }
+		public DbSet<Track> Tracks { get; set; }
 
 		public OmmiDbContext(DbContextOptions<OmmiDbContext> options) : base(options) { }
 
