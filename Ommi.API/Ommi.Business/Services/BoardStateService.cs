@@ -105,7 +105,8 @@ namespace Ommi.Business.Services
 			list.Add(new Track
 			{
 				Id = Guid.NewGuid().ToString(),
-				InstrumentName = "kick",
+				InstrumentName = "Kick",
+				SoundName = "kick",
 				Steps = "0000000000000000",
 				Volume = 100
 			});
@@ -113,7 +114,8 @@ namespace Ommi.Business.Services
 			list.Add(new Track
 			{
 				Id = Guid.NewGuid().ToString(),
-				InstrumentName = "sub",
+				InstrumentName = "Snare",
+				SoundName = "snare",
 				Steps = "0000000000000000",
 				Volume = 100
 			});
@@ -121,7 +123,8 @@ namespace Ommi.Business.Services
 			list.Add(new Track
 			{
 				Id = Guid.NewGuid().ToString(),
-				InstrumentName = "clap",
+				InstrumentName = "Clap",
+				SoundName = "clap",
 				Steps = "0000000000000000",
 				Volume = 100
 			});
@@ -129,15 +132,8 @@ namespace Ommi.Business.Services
 			list.Add(new Track
 			{
 				Id = Guid.NewGuid().ToString(),
-				InstrumentName = "hihat",
-				Steps = "0000000000000000",
-				Volume = 100
-			});
-
-			list.Add(new Track
-			{
-				Id = Guid.NewGuid().ToString(),
-				InstrumentName = "openhihat",
+				InstrumentName = "HiHat",
+				SoundName = "hihat",
 				Steps = "0000000000000000",
 				Volume = 100
 			});

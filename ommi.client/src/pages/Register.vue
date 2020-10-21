@@ -52,7 +52,7 @@ export default {
 
       POST('/auth/register', this.registerRequest, false, '')
         .then(response => response.json())
-        .then(_ => {
+        .then(() => {
           this.$router.push('/login')
         })
         .catch(() => {

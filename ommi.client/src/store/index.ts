@@ -121,8 +121,8 @@ store.dispatch('fetchSounds')
 
 Tone.Transport.scheduleRepeat(function (time) {
   if (store.state.on) {
-    store.state.boardState.tracks.forEach(({ steps, instrumentName }) => {
-      const snd = store.state.sounds.find((s) => s.name === instrumentName)
+    store.state.boardState.tracks.forEach(({ steps, soundName }) => {
+      const snd = store.state.sounds.find((s) => s.name === soundName)
       if (steps[store.state.currentStepIndex] === true) {
         // snd.buffer.volume.value = 50
         snd.buffer.start(time)

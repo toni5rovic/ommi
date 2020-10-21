@@ -24,7 +24,7 @@ namespace Ommi.Web.Controllers
 
 		// POST /tracks
 		[HttpPost]
-		public async Task<TrackResponse> Create(TrackRequest newTrackRequest)
+		public async Task<TrackResponse> Create([FromBody] TrackRequest newTrackRequest)
 		{
 			TrackDTO trackDTO = autoMapper.Map<TrackDTO>(newTrackRequest);
 			TrackDTO createdTrackDTO = await trackService.CreateTrack(trackDTO);

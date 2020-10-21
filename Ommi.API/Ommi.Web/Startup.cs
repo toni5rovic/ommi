@@ -68,7 +68,8 @@ namespace Ommi.Web
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IRoomService, RoomService>();
 			services.AddScoped<IBoardStateService, BoardStateService>();
-			
+			services.AddScoped<ITrackService, TrackService>();
+
 			// Add AutoMapper
 			services.AddAutoMapper(typeof(AutoMapperProfile));
 

@@ -9,7 +9,7 @@
       v-for="(track, index) in boardState.tracks"
     >
       <h2
-        :key="track.instrumentName"
+        :key="track.soundName"
         :style="`grid-column: 1; grid-row: ${index+1};`"
         class="st-name"
       >
@@ -17,7 +17,7 @@
       </h2>
       <step
         v-for="(step, stepIndex) in track.steps"
-        :key="`${track.instrumentName}-${stepIndex}`"
+        :key="`${track.soundName}-${stepIndex}`"
         :track="index"
         :on="step"
         :doubled="step === true"
@@ -47,8 +47,7 @@ export default {
 }
 .steps {
   display: grid;
-  grid-template-columns: 155px repeat(16, auto);
-  border: 1px solid #555;
+  grid-template-columns: 120px repeat(16, auto);
   margin: 0px 20px 20px;
 }
 .st-name {
