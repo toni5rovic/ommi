@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Ommi.Business.DB;
+using Ommi.Business.DB.Entities;
 using Ommi.Business.DTOs;
 using Ommi.Business.Services.Interfaces;
 
