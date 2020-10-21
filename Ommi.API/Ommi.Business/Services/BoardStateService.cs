@@ -76,6 +76,7 @@ namespace Ommi.Business.Services
 				throw new Exception($"Room with name: {roomName} doesn't exist.");
 
 			BoardState existingBoardState = await dbContext.BoardStates
+				.Include(bs => bs.Tracks)
 				.Where(bs => bs.Room.Name == roomName)
 				.FirstOrDefaultAsync();
 			if (existingBoardState == null)
@@ -84,7 +85,17 @@ namespace Ommi.Business.Services
 			BoardState updatedBoardState = autoMapper.Map<BoardState>(boardStateDTO);
 			updatedBoardState.RoomId = existingBoardState.RoomId;
 
-			dbContext.Entry(existingBoardState).CurrentValues.SetValues(updatedBoardState);
+			existingBoardState.TempoBPM = updatedBoardState.TempoBPM;
+		
+			foreach(var track in existingBoardState.Tracks)
+			{
+				Track updatedTrack = updatedBoardState.Tracks
+					.Where(t => t.InstrumentName == track.InstrumentName)
+					.FirstOrDefault();
+				track.Steps = updatedTrack.Steps;
+				Console.WriteLine($"Updated track: {track.InstrumentName}");
+			}
+
 			await dbContext.SaveChangesAsync();
 		}
 
