@@ -1,16 +1,20 @@
 <template>
-  <div class="container">
-    <div class="transport">
-      <div>
-        <h1 class="room-name">Current room is: {{ this.$store.state.roomName }}</h1>
+  <v-container class="mb-0 pb-0">
+    <v-row :align="center">
+      <div class="col-5" :align-self="align">
+        <h3>Current room is: {{ this.$store.state.roomName }}</h3>
       </div>
-      <BPM />
-      <start-button />
-    </div>
+      <v-col cols="4" :align-self="center">
+        <BPM />
+      </v-col>
+      <v-col cols="4" class="ma-1 ml-5 pl-5" :align-self="center">
+        <start-button />
+      </v-col>
+    </v-row>
     <div v-if="ready">
       <StepSequencer />
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -39,28 +43,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* .container {
-  max-width: 800px;
-  margin: auto;
-  background: linear-gradient(to bottom right, #222, #0a0a0a);
-  border: 2px solid black;
-  border-radius: 4px;
-  margin-top: 20px;
-} */
-.room-name{
-  text-align: left;
-  font-size: 50px;
-  padding-left: 20px;
-}
-.transport {
-  display: grid;
-  grid-template-columns: 50% 25% 25%;
-}
-.button-container {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  padding: 0px 20px 10px;
-}
-</style>
