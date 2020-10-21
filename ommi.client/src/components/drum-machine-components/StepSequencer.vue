@@ -47,7 +47,7 @@ export default {
 }
 .steps {
   display: grid;
-  grid-template-columns: 155px repeat(16, 37.5px);
+  grid-template-columns: 155px repeat(16, auto);
   border: 1px solid #555;
   margin: 0px 20px 20px;
 }
