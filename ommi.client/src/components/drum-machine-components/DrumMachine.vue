@@ -1,13 +1,13 @@
 <template>
   <v-container class="mb-0 pb-0">
-    <v-row :align="center">
-      <div class="col-5" :align-self="align">
-        <h3>Current room is: {{ this.$store.state.roomName }}</h3>
-      </div>
-      <v-col cols="4" :align-self="center">
+    <v-row>
+      <v-col cols="5" class="mt-3">
+        <p class="text-button">Current room is: <br />{{ this.$store.state.roomName }}</p>
+      </v-col>
+      <v-col cols="4" class="">
         <BPM />
       </v-col>
-      <v-col cols="4" class="ma-1 ml-5 pl-5" :align-self="center">
+      <v-col cols="3" class="mt-1">
         <start-button />
       </v-col>
     </v-row>
