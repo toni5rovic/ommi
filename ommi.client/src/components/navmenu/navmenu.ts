@@ -15,6 +15,12 @@ export default class NavMenuScript extends Vue {
     this.$router.push('/register')
   }
 
+  rooms () {
+    if (this.$router.currentRoute.path !== '/rooms') {
+      this.$router.push('/rooms')
+    }
+  }
+
   root () {
     console.log(this.$router.currentRoute.path)
     if (this.$router.currentRoute.path !== '/') {
