@@ -26,6 +26,9 @@ namespace Ommi.Business.DB.EntityConfigurations
 			builder.Property(e => e.Volume)
 				.HasColumnName("Volume");
 
+			builder.Property(e => e.SoundName)
+				.HasColumnName("SoundName");
+
 			builder.HasKey(e => e.Id);
 		}
 	}

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ommi.Business.DB;
 
 namespace Ommi.Business.Migrations
 {
     [DbContext(typeof(OmmiDbContext))]
-    partial class OmmiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201021192151_AddedSoundNameToTrack")]
+    partial class AddedSoundNameToTrack
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
