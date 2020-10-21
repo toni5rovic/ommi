@@ -9,6 +9,7 @@ declare module 'vue/types/vue' {
     $roomCreated: Function;
     $joinedToTheRoom: Function;
     $connection: SignalR.HubConnection;
+    $receiveMessage: Function;
   }
 }
 
@@ -28,12 +29,12 @@ export default {
         Vue.prototype.$ommiHub.$emit('receiveMessage', message)
       })
 
-      Vue.prototype.$connection.on('roomCreated', () => {
-        Vue.prototype.$ommiHub.$emit('roomCreated')
+      Vue.prototype.$connection.on('roomCreated', (roomName) => {
+        Vue.prototype.$ommiHub.$emit('roomCreated', roomName)
       })
 
-      Vue.prototype.$connection.on('joinedToTheRoom', () => {
-        Vue.prototype.$ommiHub.$emit('joinedToTheRoom')
+      Vue.prototype.$connection.on('joinedToTheRoom', (roomName) => {
+        Vue.prototype.$ommiHub.$emit('joinedToTheRoom', roomName)
       })
 
       Vue.prototype.$connection.start()

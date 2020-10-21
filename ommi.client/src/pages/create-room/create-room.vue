@@ -72,8 +72,9 @@ export default {
         })
     },
 
-    roomCreated () {
+    roomCreated (roomName: string) {
       this.roomBeingCreated = false
+      this.$store.commit('setRoomName', roomName)
       this.$router.push('/board')
     },
 

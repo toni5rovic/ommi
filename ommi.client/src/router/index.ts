@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue'
 import Login from '../pages/login/login-page.vue'
 import Rooms from '../pages/rooms/rooms.vue'
 import CreateRoom from '../pages/create-room/create-room.vue'
-
+import Board from '../pages/board/board.vue'
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
@@ -27,6 +27,11 @@ const routes: Array<RouteConfig> = [
     path: '/create-room',
     name: 'CreateRoom',
     component: CreateRoom
+  },
+  {
+    path: '/board',
+    name: 'Board',
+    component: Board
   }
 ]
 

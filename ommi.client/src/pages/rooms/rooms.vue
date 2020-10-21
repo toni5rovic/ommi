@@ -63,7 +63,7 @@ export default {
       this.$router.push('/create-room')
     },
     joinRoom (roomName) {
-      console.log(roomName)
+      this.$store.commit('setRoomName', roomName)
       this.$connection.invoke('JoinGroupAsync', roomName)
     },
     joinedToTheRoom () {

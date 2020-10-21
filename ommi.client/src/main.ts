@@ -5,6 +5,8 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import SignalRPlugin from './plugins/signalr'
 
+import './pages/board/board.css'
+
 Vue.config.productionTip = false
 
 Vue.use(SignalRPlugin)
