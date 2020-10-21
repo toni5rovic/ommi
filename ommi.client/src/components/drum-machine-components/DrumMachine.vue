@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="transport">
-      <div>{{ this.$store.state.roomName }}</div>
+      <div>
+        <h1 class="room-name">Current room is: {{ this.$store.state.roomName }}</h1>
+      </div>
       <BPM />
       <start-button />
     </div>
@@ -38,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* .container {
   max-width: 800px;
   margin: auto;
@@ -47,6 +49,11 @@ export default {
   border-radius: 4px;
   margin-top: 20px;
 } */
+.room-name{
+  text-align: left;
+  font-size: 50px;
+  padding-left: 20px;
+}
 .transport {
   display: grid;
   grid-template-columns: 50% 25% 25%;
