@@ -38,6 +38,9 @@ export default {
         track: this.track,
         step: this.index
       })
+
+      // Send updated board state to hub
+      this.$sendUpdatedBoardState(this.$store.state.boardState, this.$store.state.roomName)
     }
   }
 }

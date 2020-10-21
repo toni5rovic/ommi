@@ -25,6 +25,15 @@ export default {
   },
   computed: {
     ...mapGetters(['ready'])
+  },
+  methods: {
+    updateBoardState (newBoardState) {
+      this.$store.commit('setBoardState', newBoardState)
+    }
+  },
+  mounted () {
+    // Listen to score changes coming from SignalR events
+    this.$ommiHub.$on('updateBoardState', this.updateBoardState)
   }
 }
 </script>

@@ -71,8 +71,11 @@ const store = new Vuex.Store({
       const sound = sounds.find((s) => s.name === name)
       sound.buffer = buffer
     },
-    setBPM (state, bpm) {
-      state.boardState.bpm = bpm
+    setBPM (state, bpm: number) {
+      if (typeof bpm !== 'number') {
+        bpm = parseInt(bpm)
+      }
+      state.boardState.tempoBPM = bpm
     },
     toggleOn (state) {
       state.on = !state.on
@@ -97,7 +100,7 @@ const store = new Vuex.Store({
       resumeAudioContext()
       commit('toggleOn')
       if (state.on) {
-        Tone.Transport.bpm.value = state.boardState.bpm
+        Tone.Transport.bpm.value = state.boardState.tempoBPM
         Tone.Transport.start()
       } else {
         Tone.Transport.stop()
@@ -107,7 +110,7 @@ const store = new Vuex.Store({
     setBPM ({ state, commit }, bpm) {
       resumeAudioContext()
       commit('setBPM', bpm)
-      Tone.Transport.bpm.value = state.boardState.bpm
+      Tone.Transport.bpm.value = state.boardState.tempoBPM
     }
   },
   modules: {

@@ -4,12 +4,14 @@ import * as SignalR from '@microsoft/signalr'
 declare module 'vue/types/vue' {
   interface Vue {
     $ommiHub: Vue;
-    $activateSignalR: Function;
+
+    $sendUpdatedBoardState: Function;
+
+    $updateBoardState: Function;
     $connectSignalR: Function;
     $roomCreated: Function;
     $joinedToTheRoom: Function;
     $connection: SignalR.HubConnection;
-    $receiveMessage: Function;
   }
 }
 
@@ -37,11 +39,15 @@ export default {
         Vue.prototype.$ommiHub.$emit('joinedToTheRoom', roomName)
       })
 
+      Vue.prototype.$connection.on('updateBoardState', (newBoardState) => {
+        Vue.prototype.$ommiHub.$emit('updateBoardState', newBoardState)
+      })
+
       Vue.prototype.$connection.start()
     }
 
-    Vue.prototype.$activateSignalR = function () {
-      return Vue.prototype.$connection.invoke('ActivateSignalR')
+    Vue.prototype.$sendUpdatedBoardState = function (newBoardState, roomName) {
+      return Vue.prototype.$connection.invoke('UpdateBoardStateAsync', newBoardState, roomName)
     }
   }
 }
