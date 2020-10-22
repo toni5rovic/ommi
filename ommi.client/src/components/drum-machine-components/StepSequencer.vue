@@ -27,13 +27,25 @@
 <script>
 import { mapState } from 'vuex'
 import Step from './Step.vue'
+import { DELETE } from '../../store/fetch.ts'
+
 export default {
   components: {
     Step
   },
   methods: {
     remove (track) {
-      console.log(track.instrumentName)
+      const index = this.$store.state.boardState.tracks.map(x => {
+        return x.id
+      }).indexOf(track.id)
+
+      this.$store.state.boardState.tracks.splice(index, 1)
+
+      DELETE('/tracks/' + track.id, true, this.$store.state.token)
+        .then(() => {
+          // Send updated board state to hub
+          this.$sendUpdatedBoardState(this.$store.state.boardState, this.$store.state.roomName)
+        })
     }
   },
   computed: {

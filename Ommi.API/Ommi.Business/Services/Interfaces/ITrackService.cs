@@ -5,6 +5,7 @@ namespace Ommi.Business.Services.Interfaces
 {
 	public interface ITrackService
 	{
-		Task<TrackDTO> CreateTrack(TrackDTO track);
+		Task<TrackDTO> CreateAsync(TrackDTO track);
+		Task DeleteAsync(string trackId);
 	}
 }

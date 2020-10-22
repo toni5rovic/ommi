@@ -27,8 +27,15 @@ namespace Ommi.Web.Controllers
 		public async Task<TrackResponse> Create([FromBody] TrackRequest newTrackRequest)
 		{
 			TrackDTO trackDTO = autoMapper.Map<TrackDTO>(newTrackRequest);
-			TrackDTO createdTrackDTO = await trackService.CreateTrack(trackDTO);
+			TrackDTO createdTrackDTO = await trackService.CreateAsync(trackDTO);
 			return autoMapper.Map<TrackResponse>(createdTrackDTO);
+		}
+
+		// DELETE /tracks/{trackId}
+		[HttpDelete("{trackId}")]
+		public async Task Delete(string trackId)
+		{
+			await trackService.DeleteAsync(trackId);
 		}
 	}
 }

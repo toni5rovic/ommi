@@ -18,7 +18,7 @@ namespace Ommi.Business.Services
 			this.autoMapper = autoMapper;
 		}
 
-		public async Task<TrackDTO> CreateTrack(TrackDTO trackDTO)
+		public async Task<TrackDTO> CreateAsync(TrackDTO trackDTO)
 		{
 			if (trackDTO == null)
 				throw new ArgumentNullException("TrackDTO is null.");
@@ -30,6 +30,17 @@ namespace Ommi.Business.Services
 			await dbContext.SaveChangesAsync();
 
 			return autoMapper.Map<TrackDTO>(track);
+		}
+
+		public async Task DeleteAsync(string trackId)
+		{
+			if (string.IsNullOrEmpty(trackId))
+				throw new ArgumentNullException("TrackId is null or empty.");
+
+			Track existingTrack = await dbContext.Tracks.FindAsync(trackId);
+			dbContext.Tracks.Remove(existingTrack);
+
+			await dbContext.SaveChangesAsync();
 		}
 	}
 }

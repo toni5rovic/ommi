@@ -59,3 +59,26 @@ export function POST (url: string, body: string | object | undefined = undefined
       }
     })
 }
+
+export function DELETE (url: string, authorize = true, token: string) {
+  const requestHeaders: HeadersInit = new Headers()
+  const requestOptions: RequestInit = {
+    method: 'DELETE'
+  }
+
+  if (authorize) {
+    requestHeaders.set('Authorization', 'Bearer ' + token)
+  }
+
+  requestOptions.headers = requestHeaders
+
+  // do the fetch
+  return fetch(baseUrl + url, requestOptions)
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        throw response
+      }
+    })
+}
