@@ -22,8 +22,10 @@
                   <v-row class="pa-0 ma-0" justify="space-between">
                     <v-col class="pa-0 ma-0" col="11">
                       <v-list-item col="12" three-line dense>
-                        <v-list-item-content class="pa-0">
-                          <v-list-item-title class="mb-1">{{ room.name }}</v-list-item-title>
+                        <v-list-item-content class="pa-2">
+                            <p class="text-button mb-0">
+                              {{ room.name }}
+                            </p>
                         </v-list-item-content>
                       </v-list-item>
                     </v-col>

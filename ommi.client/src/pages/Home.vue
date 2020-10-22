@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1 class="header">Welcome To Ommi</h1>
+    <p class="text-h1">Welcome To Ommi</p>
+    <p class="text-button">Online Music Management Interface</p>
     <img alt="logo" src="../assets/ommi-logo.jpg">
     <div>Login if you have an account or register to continue</div>
   </div>
@@ -15,9 +16,3 @@ export default class Home extends Vue {
 
 }
 </script>
-
-<style scoped>
-.header{
-  font-size: 150px;
-}
-</style>
